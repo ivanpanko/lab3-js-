@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="content">
+    <h2>ПОЗИЦІОНУВАННЯ</h2>
+    <p>
+      За замовчуванням елементи на сторінці розташовуються згідно їх<br>
+      опису у основному потоці (один за одним).
+    </p>
+    <p>
+      Є декілька підходів до позиціонування елементів на сторінці.<br>
+      Розглянемо деякі із них:
+    </p>
+    <ul>
+      <li>з викорстанням властивості position;</li>
+      <li>з використанням властивості float;</li>
+      <li>з використаннм flex-блоків;</li>
+    </ul>
+
+    <h4>Використання position</h4>
+    <p>
+      Властивість position дозволяє змінити позицію елемента зі<br>
+      збереженням місця розташування і без збереження місця розташування<br>
+      у основному потоці. Розглянемо можливі значення цієї властивості:
+    </p>
+    <ul>
+      <li>static – за замовчуванням елемент залишається на своєму місці у потоці;</li>
+      <li>relative – змінює своє значення відносно поточного зі збереженням простору, який він займав у потоці;</li>
+      <li>absolute – змінює своє значення відносно основного вікна або ж найближчого предка з властивістю position:relative чи absolute (втрачає місце у основному потоці)</li>
+      <li>fixed – дозволяє зафіксувати позицію елемента на екрані і не змінювати її при прокручуванні (втрачає місце у основному потоці).</li>
+    </ul>
+
+    <div>position:relative</div>
+    <p>
+      При використанні даної позиції залишається місце під елемент у<br>
+      основному потоці і є можливість змістити його відносно початкового<br>
+      полощення. При цьому необхідно задати величину зміщення по осям за<br>
+      допомогою властивостей:
+    </p>
+    <ul style="list-style-type: none;">
+      <li>top – відстань від верхнього краю;</li>
+      <li>bottom – відстань від нижнього краю;</li>
+      <li>left – відстань від лівого краю;</li>
+      <li>right – відстань від правого краю.</li>
+    </ul>
+    <div>Приклади. Розглянемо приклади зміщення на фрагменті</div>
+  </div>
+
+  <h2>Приклади. Розглянемо приклади зміщення на фрагменті</h2>
+  <table>
+    <tr>
+      <th style="width: 200px;">До зміщення</th>
+      <th style="width: 250px;"></th>
+      <th></th>
+    </tr>
+    <tr>
+      <td>
+        <div class="wrapp-demo">
+          <div class="item1">div1</div>
+          <div class="item2">div2</div>
+          <div class="item3">div3</div>
+        </div>
+      </td>
+      <td>
+        <pre>&lt;<span class="kw-blue">div class="item1"</span>&gt;
+   div1
+&lt;/<span class="kw-blue">div</span>&gt;
+
+&lt;<span class="kw-blue">div class="item2"</span>&gt;
+   div2
+&lt;/<span class="kw-blue">div</span>&gt;
+
+&lt;<span class="kw-blue">div class="item3"</span>&gt;
+   div3
+&lt;/<span class="kw-blue">div</span>&gt;</pre>
+      </td>
+      <td>
+        <pre><span class="kw-blue">.wrapp div</span>{
+    <span class="kw-brown">border</span>:<span class="kw-green">black</span> solid 1px;
+    <span class="kw-blue">width</span>: 150px;
+    <span class="kw-blue">height</span>: 100px;
+    <span class="kw-blue">margin</span>: 0px;
+}
+<span class="kw-blue">.item1</span>{
+    <span class="kw-blue">background</span>: blue;
+}
+<span class="kw-blue">.item2</span>{
+    <span class="kw-blue">background</span>: purple;
+}
+<span class="kw-blue">.item3</span>{
+    <span class="kw-blue">background</span>: green;
+}</pre>
+      </td>
+    </tr>
+  </table>
+
+  <h2>Приклади зміщення</h2>
+  <table>
+    <tr>
+      <th style="width: 250px;">Вигляд на екрані</th>
+      <th>Код CSS</th>
+    </tr>
+
+    <tr>
+      <td>
+        <div class="wrapp-demo">
+          <div class="item1">div1</div>
+          <div class="item2" style="position: relative; left: 50px;">div2</div>
+          <div class="item3">div3</div>
+        </div>
+      </td>
+      <td>
+        <pre><span class="kw-blue">.item1</span>{
+    <span class="kw-blue">background</span>: blue;
+}
+<span class="kw-blue">.item2</span>{
+    <span class="kw-blue">background</span>: purple;
+    <span class="kw-blue">position</span>: relative;
+    <span class="kw-blue">left</span>:50px;
+}
+<span class="kw-blue">.item3</span>{
+    <span class="kw-blue">background</span>: green;
+}</pre>
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <div class="wrapp-demo">
+          <div class="item1">div1</div>
+          <div class="item2" style="position: relative; right: 50px;">div2</div>
+          <div class="item3">div3</div>
+        </div>
+      </td>
+      <td>
+        <pre><span class="kw-blue">.item1</span>{
+    <span class="kw-blue">background</span>: blue;
+}
+<span class="kw-blue">.item2</span>{
+    <span class="kw-blue">background</span>: purple;
+    <span class="kw-blue">position</span>: relative;
+    <span class="kw-blue">right</span>:50px;
+}
+<span class="kw-blue">.item3</span>{
+    <span class="kw-blue">background</span>: green;
+}</pre>
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <div class="wrapp-demo" style="padding-bottom: 50px;">
+          <div class="item1">div1</div>
+          <div class="item2" style="position: relative; top: 50px;">div2</div>
+          <div class="item3">div3</div>
+        </div>
+      </td>
+      <td>
+        <pre><span class="kw-blue">.item1</span>{
+    <span class="kw-blue">background</span>: blue;
+}
+<span class="kw-blue">.item2</span>{
+    <span class="kw-blue">background</span>: purple;
+    <span class="kw-blue">position</span>: relative;
+    <span class="kw-blue">top</span>:50px;
+}
+<span class="kw-blue">.item3</span>{
+    <span class="kw-blue">background</span>: green;
+}</pre>
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <div class="wrapp-demo" style="padding-bottom: 50px;">
+          <div class="item1">div1</div>
+          <div class="item2" style="position: relative; left: 40px; top: 50px;">div2</div>
+          <div class="item3">div3</div>
+        </div>
+      </td>
+      <td>
+        <pre><span class="kw-blue">.item1</span>{
+    <span class="kw-blue">background</span>: blue;
+}
+<span class="kw-blue">.item2</span>{
+    <span class="kw-blue">background</span>: purple;
+    <span class="kw-blue">position</span>: relative;
+    <span class="kw-blue">left</span>:40px;
+    <span class="kw-blue">top</span>:50px;
+}
+<span class="kw-blue">.item3</span>{
+    <span class="kw-blue">background</span>: green;
+}</pre>
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <div class="wrapp-demo">
+          <div class="item1">div1</div>
+          <div class="item2" style="position: relative; bottom: 50px;">div2</div>
+          <div class="item3">div3</div>
+        </div>
+      </td>
+      <td>
+        <pre><span class="kw-blue">.item1</span>{
+    <span class="kw-blue">background</span>: blue;
+}
+<span class="kw-blue">.item2</span>{
+    <span class="kw-blue">background</span>: purple;
+    <span class="kw-blue">position</span>: relative;
+    <span class="kw-blue">bottom</span>:50px;
+}
+<span class="kw-blue">.item3</span>{
+    <span class="kw-blue">background</span>: green;
+}</pre>
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <div class="wrapp-demo">
+          <div class="item1">div1</div>
+          <div class="item2" style="position: relative; right: 40px; bottom: 50px;">div2</div>
+          <div class="item3">div3</div>
+        </div>
+      </td>
+      <td>
+        <pre><span class="kw-blue">.item1</span>{
+    <span class="kw-blue">background</span>: blue;
+}
+<span class="kw-blue">.item2</span>{
+    <span class="kw-blue">background</span>: purple;
+    <span class="kw-blue">position</span>: relative;
+    <span class="kw-blue">right</span>: 40px;
+    <span class="kw-blue">bottom</span>:50px;
+}
+<span class="kw-blue">.item3</span>{
+    <span class="kw-blue">background</span>: green;
+}</pre>
+      </td>
+    </tr>
+  </table>
+
+  <p>Як бачимо, елемент зміщується, але місце, яке він займав у потоці залишається.</p>
+
+  <pre>
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;Title&lt;/title&gt;
+    &lt;style&gt;
+        .w_out{
+            background: lightskyblue;
+            width:300px;
+            padding-bottom: 100px;
+            padding-top: 20px;
+            border:black solid 1px;
+            border-radius: 10px;
+        }
+        .w_in{
+            background: black;
+            border:black solid 1px;
+            border-radius: 10px;
+            margin-left: 20px;
+            margin-right: 20px;
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+        .w_in div{
+            text-align: center;
+            color: white;
+        }
+        .text2{
+            border: white solid 1px;
+            border-radius: 10px;
+            position: relative;
+            top:30px;
+            background: black;
+        }
+
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div class="w_out"&gt;
+    &lt;div class="w_in"&gt;
+        &lt;div class="text1"&gt;
+            &lt;h1&gt;HTML&lt;/h1&gt;
+            &lt;h2&gt;(sdgs  sdfg sd dfh dfh)&lt;/h2&gt;
+            &lt;p&gt; dsfasdf aiusfh sav&lt;/p&gt;
+        &lt;/div&gt;
+        &lt;div class="text2"&gt;
+            &lt;p&gt;"dfsdfsdfds"&lt;/p&gt;
+            &lt;p&gt;fsdfsdfdsf&lt;/p&gt;
+            &lt;p&gt;fsdfsdfdsf&lt;/p&gt;
+            &lt;p&gt;fsdfsdfdsf&lt;/p&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+    &lt;/body&gt;
+&lt;/html&gt;
+</pre>
+
+  <img src="file:///C:/Users/1/Downloads/photo_2026-10-20_20-30-13.jpg" alt="">
+  <div>position:absolute</div>
+  <p>Значення використовується тоді, коли потрібно спозиціонувати елемент-нащадок відносно деякого предка-контейнера (найближчого, який має властивість position:relative чи absolute (втрачає місце у основному потоці).</p>
+
+  <h2>Приклади зміщення</h2>
+  <table>
+    <tr>
+      <th style="width: 250px;">Вигляд на екрані</th>
+      <th>Код CSS</th>
+    </tr>
+
+    <tr>
+      <td>
+        <div class="wrapp-demo">
+          <div class="item1">div1</div>
+          <div class="item2" style="position: relative; left: 50px;">div2</div>
+          <div class="item3">div3</div>
+        </div>
+      </td>
+      <td>
+        <pre><span class="kw-blue">.item1</span>{
+    <span class="kw-blue">background</span>: blue;
+}
+<span class="kw-blue">.item2</span>{
+    <span class="kw-blue">background</span>: purple;
+    <span class="kw-blue">position</span>: relative;
+    <span class="kw-blue">left</span>:50px;
+}</pre>
+      </td>
+    </tr>
+  </table>
+
+  <h2>1. Триколонковий макет (float)</h2>
+  <div class="layout-container">
+    <div class="header">Шапка сайту</div>
+    <div class="left">
+      <strong>Ліва колонка</strong><br>
+      (float: left)
+    </div>
+    <div class="center">
+      <strong>Основний вміст</strong><br>
+      Центральна частина сторінки
+    </div>
+    <div class="right">
+      <strong>Права колонка</strong><br>
+      (float: right)
+    </div>
+    <div class="footer">Підвал сайту</div>
+  </div>
+
+  <hr>
+
+  <h2>2. Фігури за допомогою рамки</h2>
+  <div class="box-border"></div>
+  <div class="triangle"></div>
+
+  <hr>
+
+  <h2>3. Позиціонування (relative та absolute)</h2>
+  <div class="parent">
+    Контейнер (position: relative)
+    <div class="child">absolute</div>
+  </div>
+</body>
+</html>
